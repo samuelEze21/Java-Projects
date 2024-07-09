@@ -25,9 +25,5 @@ import java.util.Scanner;
   System.out.printf("The Square of secondNum is: %d%n ", secondNumSquare); 
   System.out.printf("The sum of their squares is: %d%n", sumOfSquares); 
   System.out.printf("The difference of their squares is: %d%n", differenceOfSquares); 
-
-   
-
    }
-
 }
