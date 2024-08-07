@@ -10,43 +10,44 @@ public class CheckOutEcom {
 	ArrayList<String> itemsPurchased = new ArrayList<String>(); 
 	ArrayList<Integer> quantityPurchased = new ArrayList<Integer>(); 
 	ArrayList<Double> priceOfItems = new ArrayList<Double>(); 
-	ArrayList<Double> totalAmount = new ArrayList<Double>(); 
+
+	ArrayList<Double> totalPerItem = new ArrayList<Double>(); 
 
 	Double subTotal = 0.0; 
-	Double discountedAmount = 0.0; 
 	Double vatAmount = 0.0; 
 	Double billTotal = 0.0;
 	Double amountPaid = 0.0; 
 	Double customerBalance = 0.0; 
 
+	int discountedAmount = 0;
 
 	String AddGoodsOrStopNow = "yes"; 
 
 
 	System.out.println("What is Customer's Name?: "); 
-	customerName = input.nextScanner(); 
+	String customerName = input.nextLine(); 
 
 
 
-	while (AddGoodsOrStopNow.equalsIgnoreCase("yes")){
+	while(AddGoodsOrStopNow.equalsIgnoreCase("yes")){
 
 		System.out.println("What item did the customer purchase?: "); 
-		itemsPurchased.add(input.nextline()); 
+		itemsPurchased.add(input.nextLine()); 
 	
 		System.out.println("How many quantity of the item purchased?: "); 
-		quantityPurchased.add(input.nextline()); 
+		quantityPurchased.add(Integer.parseInt(input.nextLine()));
 
-		System.out.println("How much per unit?: "); 
-		priceOfItems.add(input.nextline()); 
-
+		System.out.println("How much per unit?: ");
+		priceOfItems.add(Double.parseDouble(input.nextLine()));
 
 		System.out.println("Add More items?: "); 
-		AddGoodsOrStopNow = input.nextline(); 
-	   }
+		AddGoodsOrStopNow = input.nextLine(); 
+
+		}
 
 
 	System.out.println("what is your name?: "); 
-	cashierName = input.nextScanner(); 
+	String cashierName = input.nextLine(); 
 
 
 	System.out.println("Howmuch Discount(%) will the user get?: "); 
@@ -82,7 +83,6 @@ public class CheckOutEcom {
 
 /*  
 
-
 ----------------------------------------------------------
 
 
@@ -108,18 +108,19 @@ public class CheckOutEcom {
 while loop ==> add More Goods? = "yes" ==> 
 
 
-- what did the customer purchase? = initialize variable and add to array itemPurchased;
-
-
-- how many pieces of this item did the user purchase? = initialize variable and add to array quantityPurchased; 
-
-
-how much per unit? = initialize variable and add to array priceItems; 
+- what did the customer purchase? = initialize variable and add to array itemPurchased; // ( use string nextLine(); to collect) 
 
 
 
+- how many pieces of this item did the user purchase? = initialize variable and add to array quantityPurchased; // ( use int, parseint into nextLine to collect)
 
-// 6. what are you buying next? = add to array itemPurchased; 
+
+- how much per unit? = initialize variable and add to array priceItems; use double, pasedouble into nextLine to collect;
+
+
+
+
+// 6. what are you buying next? = add to array itemPurchased; ( use int to collect) 
 
 7. How many pieces of this item do you want to buy? = add to array quantityPurchased; 
 
