@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.ArrayList; 
+import java.util.Scanner;
 
 
 public class CheckOutEcom {
@@ -9,25 +9,81 @@ public class CheckOutEcom {
 
 	ArrayList<String> itemsPurchased = new ArrayList<String>(); 
 	ArrayList<Integer> quantityPurchased = new ArrayList<Integer>(); 
-	ArrayList<Double> priceItems = new ArrayList<String>(); 
-	ArrayList<Double> totalPrice = new ArrayList<String>(); 
+	ArrayList<Double> priceOfItems = new ArrayList<Double>(); 
+	ArrayList<Double> totalAmount = new ArrayList<Double>(); 
+
+	Double subTotal = 0.0; 
+	Double discountedAmount = 0.0; 
+	Double vatAmount = 0.0; 
+	Double billTotal = 0.0;
+	Double amountPaid = 0.0; 
+	Double customerBalance = 0.0; 
 
 
-	System.out.println("What is the Name of this customer?: "); 
+	String AddGoodsOrStopNow = "yes"; 
+
+
+	System.out.println("What is Customer's Name?: "); 
 	customerName = input.nextScanner(); 
 
 
-	System.out.println("What did the customer purchase?: "); 
-	itemPurchased.add(input.nextline()); 
+
+	while (AddGoodsOrStopNow.equalsIgnoreCase("yes")){
+
+		System.out.println("What item did the customer purchase?: "); 
+		itemsPurchased.add(input.nextline()); 
 	
-	System.out.println("How many quantity did they purchase?: "); 
-	quantityPurchased.add(input.nextline()); 
+		System.out.println("How many quantity of the item purchased?: "); 
+		quantityPurchased.add(input.nextline()); 
 
-	System.out.println("How much per unit?: "); 
-	priceItems.add(input.nextline()); 
+		System.out.println("How much per unit?: "); 
+		priceOfItems.add(input.nextline()); 
+
+
+		System.out.println("Add More items?: "); 
+		AddGoodsOrStopNow = input.nextline(); 
+	   }
+
+
+	System.out.println("what is your name?: "); 
+	cashierName = input.nextScanner(); 
+
+
+	System.out.println("Howmuch Discount(%) will the user get?: "); 
+	discountedAmount = input.nextInt(); 
+
+
+	System.out.println("SEMICOLON STORES "); 
+	System.out.println("MAIN BRANCH "); 
+	System.out.println("LOCATION: 312, HERBERT MACUALY WAY, SABO YABA, LAGOS.  STORES "); 
+	System.out.println("TEL: 032938343 "); 
+	System.out.println("Date: 07-Aug-24 8:34:10 pm"); 
+	System.out.println("Cashier: +cashierName"); 
+	System.out.println("customerName: +customerName"); 
+
+	System.out.println ("==========================================================================================");
+
+			// System.out.printf( %s %"ITEM",     "QTY",     "PRICE",     "TOTAL(NGN)"); 
+
+	System.out.println("------------------------------------------------------------------------------------------"); 
 
 
 
+
+
+
+
+
+	  }
+	}
+
+	
+
+
+/*  
+
+
+----------------------------------------------------------
 
 
 3. second refinement: 
@@ -48,26 +104,46 @@ public class CheckOutEcom {
 
 
 
-5. Do you want more items? = ( Use sentinel, while userInput != "no" yes == continue) 
+5. Do you want more items?  = ( create a string variable to collect add more goods input.(AddGoodsOrStopNow = "yes"), 
+while loop ==> add More Goods? = "yes" ==> 
 
-6. what are you buying next? = add to array itemPurchased; 
+
+- what did the customer purchase? = initialize variable and add to array itemPurchased;
+
+
+- how many pieces of this item did the user purchase? = initialize variable and add to array quantityPurchased; 
+
+
+how much per unit? = initialize variable and add to array priceItems; 
+
+
+
+
+// 6. what are you buying next? = add to array itemPurchased; 
 
 7. How many pieces of this item do you want to buy? = add to array quantityPurchased; 
 
 8. how much per unit? = add to array priceItems; 
 
-9. Do you want more items = ( No ) 
-
-10. What is your name (cashier)? = initialize variable for cashierName; 
-
-11. How much discount will customer get? = initialize to variable (discountedAmount = subAmount / 100 x 8) 
+//
 
 
 
+6. Do you want more items = ( No ) 
+
+
+7. What is your name (cashier)?  variable for cashierName; 
+
+
+8. How much discount will customer get? = initialize to variable (discountedAmount = subAmount / 100 x 8) 
 
 
 
 
+9. 
+
+
+--------------------------------------------
 
 
 
@@ -90,7 +166,7 @@ and display it as customers invoice, computes customer's total amount, discount 
 6 discounted amount 
 7. vatValue 
 
-//8. user cart (total product and qtty purchased) 
+//8. invoice display (total product and qtty purchased, total amount, discount, Vat) 
 
 
 
@@ -107,5 +183,15 @@ You have been hired to develop an ecommerce checkout system for semicolon store.
 
 -  enter each product details in the user's cart - product and quantity purchased 
 - display customer's invoice
+
 - computes total, discount and VAT OF 7.5% total price
+
+
+
+----------------
+
+
+*/ 
+
+
 
