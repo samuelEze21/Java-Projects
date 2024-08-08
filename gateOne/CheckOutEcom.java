@@ -10,7 +10,7 @@ public class CheckOutEcom {
 	ArrayList<String> itemsPurchased = new ArrayList<String>(); 
 	ArrayList<Integer> quantityPurchased = new ArrayList<Integer>(); 
 	ArrayList<Double> priceOfItems = new ArrayList<Double>(); 
-	ArrayList<Double> totalPerItem = new ArrayList<Double>(); 
+	// ArrayList<Double> totalPerItem = new ArrayList<Double>(); no more using this arraylist to collect, we now using Double and a new variable ...
 
 
 	Double subTotal = 0.0; 
@@ -19,7 +19,7 @@ public class CheckOutEcom {
 	Double amountPaid = 0.0; 
 	Double customerBalance = 0.0; 
 
-	int discountedAmount = 0;
+	int discountPercentage = 0;
 
 	String AddGoodsOrStopNow = "yes"; 
 
@@ -44,12 +44,12 @@ public class CheckOutEcom {
 
 		}
 
-	System.out.println("what is your name?: "); 
+	System.out.println("what is your name? (Cashier): "); 
 	String cashierName = input.nextLine(); 
 
 
 	System.out.println("Howmuch Discount(%) will the user get?: "); 
-	discountedAmount = input.nextInt(); 
+	discountPercentage = input.nextInt(); 
 
 
 	System.out.println("SEMICOLON STORES "); 
@@ -75,16 +75,58 @@ public class CheckOutEcom {
         System.out.println("------------------------------------------------------------------------------------------");
         System.out.printf("%-20s %8s %8s %12.2f%n", "SUBTOTAL", "", "", subTotal);
 
-	double discountAmount = (discountedAmount / 100.0) * subTotal;
+	double discountAmount = (discountPercentage / 100.0) * subTotal;
         double discountedTotal = subTotal - discountAmount;
-        vatAmount = 0.075 * discountedTotal; 
+        vatAmount = 0.175 * discountedTotal; 
         billTotal = discountedTotal + vatAmount;
 
         System.out.printf("%-20s %8s %8s %12.2f%n", "DISCOUNT", "", "", discountAmount);
-        System.out.printf("%-20s %8s %8s %12.2f%n", "VAT (7.5%)", "", "", vatAmount);
-        System.out.printf("%-20s %8s %8s %12.2f%n", "TOTAL BILL", "", "", billTotal);
- 
+        System.out.printf("%-20s %8s %8s %12.2f%n", "VAT @ (17.5%)", "", "", vatAmount);
+	System.out.println ("==========================================================================================");
+        System.out.printf("%-20s %8s %8s %12.2f%n", "BILL TOTAL", "", "", billTotal);
+ 	System.out.println ("==========================================================================================");
+	System.out.println(" THIS IS NOT A RECIEPT, KINDLY PAY: " + billTotal);
+	System.out.println ("==========================================================================================");
 
+	
+	System.out.println("How Much Did the Customer Give to you?: ");
+	amountPaid = input.nextDouble(); 
+
+	customerBalance = amountPaid - billTotal;
+
+	System.out.println("------------------------------------------------------------------------------------------");
+
+	System.out.println("SEMICOLON STORES "); 
+	System.out.println("MAIN BRANCH "); 
+	System.out.println("LOCATION: 312, HERBERT MACUALY WAY, SABO YABA, LAGOS.  STORES "); 
+	System.out.println("TEL: 032938343 "); 
+	System.out.println("Date: 07-Aug-24 8:34:10 pm"); 
+	System.out.println("Cashier: " + cashierName);
+        System.out.println("Customer Name: " + customerName);
+
+	System.out.println ("==========================================================================================");
+
+	System.out.printf("%-20s %8s %8s %12s%n", "ITEM", "QTY", "PRICE", "TOTAL(NGN)");
+        System.out.println("------------------------------------------------------------------------------------------");
+
+        for (int index = 0; index < itemsPurchased.size(); index++) {
+            double totalPerItemValue = quantityPurchased.get(index) * priceOfItems.get(index);
+            subTotal += totalPerItemValue;
+
+	System.out.printf("%-20s %8d %8.2f %12.2f%n", itemsPurchased.get(index), quantityPurchased.get(index), priceOfItems.get(index), totalPerItemValue);
+        }
+
+        	System.out.println("------------------------------------------------------------------------------------------");
+        System.out.printf("%-20s %8s %8s %12.2f%n", "SUBTOTAL", "", "", subTotal);
+
+ 	System.out.printf("%-20s %8s %8s %12.2f%n", "DISCOUNT", "", "", discountAmount);
+        System.out.printf("%-20s %8s %8s %12.2f%n", "VAT @ (17.5%)", "", "", vatAmount);
+	System.out.println ("==========================================================================================");
+        System.out.printf("%-20s %8s %8s %12.2f%n", "BILL TOTAL", "", "", billTotal);
+        System.out.printf("%-20s %8s %8s %12.2f%n", "AMOUNT PAID", "", "", amountPaid);
+        System.out.printf("%-20s %8s %8s %12.2f%n", "BALANCE", "", "", customerBalance);
+	System.out.println ("==========================================================================================");
+	System.out.println("THANK YOU FOR YOUR PATRONAGE");
 
 	  }
 	}
@@ -137,13 +179,21 @@ while loop ==> add More Goods? = "yes" ==>
 7. What is your name (cashier)?  variable for cashierName; 
 
 
-8. How much discount will customer get? = initialize to variable (discountedAmount = subTotal / 100 x 8) 
+8. How much discount will customer get? = initialize to variable (discountPercentage = subTotal / 100 x 8) 
 
 
+9. new double variable totalPerItemValue to hold total value of each product and unit, and use it increment the ( subtotal + 1)
 
 
-9. 
+9. create a double variable discountedAmount to hold amount (gotten from discounted percentage) to be deducted from subtotal
 
+
+10 create new doudle variable discountedTotal = discoutedamount + vat amunt 
+
+
+11 use the variable billTotal to collect balance for discountedTotal + Vat Amount
+
+12. then use variables amountPaid and customerBalance to complete the business by printing invoice again showing both figures to complete biz.
 
 --------------------------------------------
 
