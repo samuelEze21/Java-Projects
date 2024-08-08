@@ -10,8 +10,8 @@ public class CheckOutEcom {
 	ArrayList<String> itemsPurchased = new ArrayList<String>(); 
 	ArrayList<Integer> quantityPurchased = new ArrayList<Integer>(); 
 	ArrayList<Double> priceOfItems = new ArrayList<Double>(); 
-
 	ArrayList<Double> totalPerItem = new ArrayList<Double>(); 
+
 
 	Double subTotal = 0.0; 
 	Double vatAmount = 0.0; 
@@ -26,7 +26,6 @@ public class CheckOutEcom {
 
 	System.out.println("What is Customer's Name?: "); 
 	String customerName = input.nextLine(); 
-
 
 
 	while(AddGoodsOrStopNow.equalsIgnoreCase("yes")){
@@ -45,7 +44,6 @@ public class CheckOutEcom {
 
 		}
 
-
 	System.out.println("what is your name?: "); 
 	String cashierName = input.nextLine(); 
 
@@ -59,20 +57,33 @@ public class CheckOutEcom {
 	System.out.println("LOCATION: 312, HERBERT MACUALY WAY, SABO YABA, LAGOS.  STORES "); 
 	System.out.println("TEL: 032938343 "); 
 	System.out.println("Date: 07-Aug-24 8:34:10 pm"); 
-	System.out.println("Cashier: +cashierName"); 
-	System.out.println("customerName: +customerName"); 
+	System.out.println("Cashier: " + cashierName);
+        System.out.println("Customer Name: " + customerName);
 
 	System.out.println ("==========================================================================================");
 
-			// System.out.printf( %s %"ITEM",     "QTY",     "PRICE",     "TOTAL(NGN)"); 
+	System.out.printf("%-20s %8s %8s %12s%n", "ITEM", "QTY", "PRICE", "TOTAL(NGN)");
+        System.out.println("------------------------------------------------------------------------------------------");
 
-	System.out.println("------------------------------------------------------------------------------------------"); 
+        for (int index = 0; index < itemsPurchased.size(); index++) {
+            double totalPerItemValue = quantityPurchased.get(index) * priceOfItems.get(index);
+            subTotal += totalPerItemValue;
 
+	System.out.printf("%-20s %8d %8.2f %12.2f%n", itemsPurchased.get(index), quantityPurchased.get(index), priceOfItems.get(index), totalPerItemValue);
+        }
 
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.printf("%-20s %8s %8s %12.2f%n", "SUBTOTAL", "", "", subTotal);
 
+	double discountAmount = (discountedAmount / 100.0) * subTotal;
+        double discountedTotal = subTotal - discountAmount;
+        vatAmount = 0.075 * discountedTotal; 
+        billTotal = discountedTotal + vatAmount;
 
-
-
+        System.out.printf("%-20s %8s %8s %12.2f%n", "DISCOUNT", "", "", discountAmount);
+        System.out.printf("%-20s %8s %8s %12.2f%n", "VAT (7.5%)", "", "", vatAmount);
+        System.out.printf("%-20s %8s %8s %12.2f%n", "TOTAL BILL", "", "", billTotal);
+ 
 
 
 	  }
@@ -83,7 +94,7 @@ public class CheckOutEcom {
 
 /*  
 
-----------------------------------------------------------
+
 
 
 3. second refinement: 
@@ -105,6 +116,7 @@ public class CheckOutEcom {
 
 
 5. Do you want more items?  = ( create a string variable to collect add more goods input.(AddGoodsOrStopNow = "yes"), 
+
 while loop ==> add More Goods? = "yes" ==> 
 
 
@@ -117,18 +129,7 @@ while loop ==> add More Goods? = "yes" ==>
 
 - how much per unit? = initialize variable and add to array priceItems; use double, pasedouble into nextLine to collect;
 
-
-
-
-// 6. what are you buying next? = add to array itemPurchased; ( use int to collect) 
-
-7. How many pieces of this item do you want to buy? = add to array quantityPurchased; 
-
-8. how much per unit? = add to array priceItems; 
-
-//
-
-
+-----------
 
 6. Do you want more items = ( No ) 
 
@@ -136,7 +137,7 @@ while loop ==> add More Goods? = "yes" ==>
 7. What is your name (cashier)?  variable for cashierName; 
 
 
-8. How much discount will customer get? = initialize to variable (discountedAmount = subAmount / 100 x 8) 
+8. How much discount will customer get? = initialize to variable (discountedAmount = subTotal / 100 x 8) 
 
 
 
