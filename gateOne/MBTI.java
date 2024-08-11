@@ -7,6 +7,35 @@ import java.util.ArrayList;
 	  Public static void main(String [] args) {
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+psuedio:
+
+top: using arrays, 
+
+
+
+
+
+*/
+
+
 	
 
 	
