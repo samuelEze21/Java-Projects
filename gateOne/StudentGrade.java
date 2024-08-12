@@ -51,13 +51,37 @@ import java.util.Scanner;
                 totalScore += allStudentScores[index][count];
             }
 
-            totalScores[index] = totalScore; // Store total score in the array
+	// Store total score in the array
+            totalScores[index] = totalScore; 
             System.out.println("Saved Successfully");
         }
 
+		       
+	double[] averageScores = new double[numberOfStudents];
 
-        double[] averageScores = new double[numberOfStudents];
-       
+        for (int index = 0; index < numberOfStudents; index++) {
+            averageScores[index] = totalScores[index] / numberOfSubjects;
+        }
+
+
+	Integer[] positions = new Integer[numberOfStudents];
+
+	for (int index = 0; index < numberOfStudents; index++) {
+		positions[index] = index + 1; 
+
+	}
+
+ 	for (int index = 0; index < numberOfStudents; index++) {
+		double totalScore = totalScores[index];
+		double averageScore = averageScores[index];
+		int position = index + 1; 
+
+		System.out.println("==========================================================");
+		System.out.println("  STUDENT    SUB1   SUB2   SUB3    TOT     AVE    POS");
+		System.out.println("==========================================================");		
+		System.out.println("Student " + (index + 1) + ": Total Score = " + totalScore + ", Average = " + averageScore + ", Position = " + position);
+        }
+	
 
 
 
@@ -115,7 +139,7 @@ second refinement:
 
 
 
-6. calculate avarage score for each student
+6. calculate avarage score for each student = totalscores / numberofsubjects
 
 
 
